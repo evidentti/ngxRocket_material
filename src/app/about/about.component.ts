@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy, AfterContentInit, AfterViewInit } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { SaunatakkiService } from './../saunatakki/saunatakki.service';
+import { finalize } from 'rxjs/operators';
 import { Logger } from '@app/core';
 
 import { environment } from '@env/environment';
@@ -17,6 +18,8 @@ export class AboutComponent implements OnInit, OnDestroy, AfterContentInit, Afte
   version: string = environment.version;
   clicked = 'none';
   text = 'none';
+  result: string;
+  isLoading: boolean;
 
   constructor(breakpointObserver: BreakpointObserver, private saunatakkiService: SaunatakkiService) {
     log.debug('constructor');
@@ -28,6 +31,10 @@ export class AboutComponent implements OnInit, OnDestroy, AfterContentInit, Afte
 
   ngOnInit() {
     log.debug('init');
+    this.isLoading = true;
+    this.saunatakkiService.getUsers({ data: 'dev' })
+      .pipe(finalize(() => { this.isLoading = false; }))
+      .subscribe((result: string) => { this.result = result; });
   }
 
   ngAfterContentInit() {

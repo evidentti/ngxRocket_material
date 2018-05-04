@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy, AfterContentInit, AfterViewInit } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { SaunatakkiService } from './../saunatakki/saunatakki.service';
 import { Logger } from '@app/core';
 
 import { environment } from '@env/environment';
@@ -17,7 +18,7 @@ export class AboutComponent implements OnInit, OnDestroy, AfterContentInit, Afte
   clicked = 'none';
   text = 'none';
 
-  constructor(breakpointObserver: BreakpointObserver) {
+  constructor(breakpointObserver: BreakpointObserver, private saunatakkiService: SaunatakkiService) {
     log.debug('constructor');
 
     breakpointObserver.observe([Breakpoints.HandsetLandscape, Breakpoints.HandsetPortrait]).subscribe(result => {

@@ -1,7 +1,10 @@
 import { Component, OnInit, OnDestroy, AfterContentInit, AfterViewInit } from '@angular/core';
 import { finalize } from 'rxjs/operators';
+import { Logger } from '@app/core';
 
 import { QuoteService } from './quote.service';
+
+const log = new Logger('HomeComponent');
 
 @Component({
   selector: 'app-home',
@@ -14,11 +17,11 @@ export class HomeComponent implements OnInit, OnDestroy, AfterContentInit, After
   isLoading: boolean;
 
   constructor(private quoteService: QuoteService) {
-    console.log('HomeComponent: constructor');
+    log.debug('constructor');
   }
 
   ngOnInit() {
-    console.log('HomeComponent: init');
+    log.debug('init');
     this.isLoading = true;
     this.quoteService.getRandomQuote({ category: 'dev' })
       .pipe(finalize(() => { this.isLoading = false; }))
@@ -26,15 +29,15 @@ export class HomeComponent implements OnInit, OnDestroy, AfterContentInit, After
   }
 
   ngAfterContentInit() {
-    console.log('HomeComponent: after content init');
+    log.debug('after content init');
   }
 
   ngAfterViewInit() {
-    console.log('HomeComponent: after view init');
+    log.debug('after view init');
   }
 
   ngOnDestroy() {
-    console.log('HomeComponent: destroy');
+    log.debug('destroy');
   }
 
 }

@@ -1,6 +1,10 @@
 import { Component, OnInit, OnDestroy, AfterContentInit, AfterViewInit } from '@angular/core';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { Logger } from '@app/core';
 
 import { environment } from '@env/environment';
+
+const log = new Logger('AboutComponent');
 
 @Component({
   selector: 'app-about',
@@ -13,28 +17,32 @@ export class AboutComponent implements OnInit, OnDestroy, AfterContentInit, Afte
   clicked = 'none';
   text = 'none';
 
-  constructor() {
-    console.log('AboutComponent: constructor');
+  constructor(breakpointObserver: BreakpointObserver) {
+    log.debug('constructor');
+
+    breakpointObserver.observe([Breakpoints.HandsetLandscape, Breakpoints.HandsetPortrait]).subscribe(result => {
+      log.debug('breakpointObserver', result);
+    });
   }
 
   ngOnInit() {
-    console.log('AboutComponent: init');
+    log.debug('init');
   }
 
   ngAfterContentInit() {
-    console.log('AboutComponent: after content init');
+    log.debug('after content init');
   }
 
   ngAfterViewInit() {
-    console.log('AboutComponent: after view init');
+    log.debug('after view init');
   }
 
   ngOnDestroy() {
-    console.log('AboutComponent: destroy');
+    log.debug('destroy');
   }
 
   buttonClicked = function (msg: string) {
-    console.log('AboutComponent: buttonClicked', msg);
+    log.debug('buttonClicked', msg);
     this.clicked = msg;
   };
 

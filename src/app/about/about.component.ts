@@ -32,7 +32,7 @@ export class AboutComponent implements OnInit, OnDestroy, AfterContentInit, Afte
   ngOnInit() {
     log.debug('init');
     this.isLoading = true;
-    this.saunatakkiService.getUsers({ data: 'dev' })
+    this.saunatakkiService.getUsers({ key: 'avain3' })
       .pipe(finalize(() => { this.isLoading = false; }))
       .subscribe((result: string) => { this.result = result; });
   }

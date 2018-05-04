@@ -8,7 +8,7 @@ import { Logger } from '@app/core';
 const log = new Logger('QuoteService');
 
 const routes = {
-  quote: (c: RandomQuoteContext) => `/jokes/random?category=${c.category}`
+  quote: (c: RandomQuoteContext) => `/norris/jokes/random?category=${c.category}`
 };
 
 export interface RandomQuoteContext {

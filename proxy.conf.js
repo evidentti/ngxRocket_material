@@ -9,18 +9,18 @@ const HttpsProxyAgent = require('https-proxy-agent');
  * For more details and options, see https://github.com/angular/angular-cli#proxy-to-backend
  */
 const proxyConfig = [{
-        context: '/api',
+        context: '/api/norris',
         pathRewrite: {
-            '^/api': ''
+            '^/api/norris': ''
         },
         target: 'https://api.chucknorris.io',
         changeOrigin: true,
         secure: false
     },
     {
-        context: '/saunatakki',
+        context: '/api/saunatakki',
         pathRewrite: {
-            '^/saunatakki': ''
+            '^/api/saunatakki': ''
         },
         target: 'https://saunatakki.com:8080',
         changeOrigin: true,

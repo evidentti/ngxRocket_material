@@ -6,7 +6,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { CoreModule } from '@app/core';
 import { SharedModule } from '@app/shared';
 import { MaterialModule } from '@app/material.module';
-import { SaunatakkiModule } from './../saunatakki/saunatakki.module';
+// import { SaunatakkiModule } from './../saunatakki/saunatakki.module';
 import { AboutComponent } from './about.component';
 import { SaunatakkiService } from './../saunatakki/saunatakki.service';
 
@@ -22,7 +22,7 @@ describe('AboutComponent', () => {
         MaterialModule,
         CoreModule,
         SharedModule,
-        SaunatakkiModule,
+        // SaunatakkiModule,
         HttpClientTestingModule
       ],
       declarations: [AboutComponent],

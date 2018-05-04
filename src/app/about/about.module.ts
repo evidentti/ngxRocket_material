@@ -9,6 +9,7 @@ import { AboutComponent } from './about.component';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
+import { SaunatakkiModule } from './../saunatakki/saunatakki.module';
 
 @NgModule({
   imports: [
@@ -18,7 +19,8 @@ import { MatInputModule } from '@angular/material/input';
     MaterialModule,
     AboutRoutingModule,
     MatButtonModule,
-    MatInputModule
+    MatInputModule,
+    SaunatakkiModule
   ],
   declarations: [
     AboutComponent

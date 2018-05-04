@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy, AfterContentInit, AfterViewInit } from '@angular/core';
 
 import { environment } from '@env/environment';
 
@@ -7,7 +7,7 @@ import { environment } from '@env/environment';
   templateUrl: './about.component.html',
   styleUrls: ['./about.component.scss']
 })
-export class AboutComponent implements OnInit {
+export class AboutComponent implements OnInit, OnDestroy, AfterContentInit, AfterViewInit {
 
   version: string = environment.version;
   clicked = 'none';
@@ -19,6 +19,18 @@ export class AboutComponent implements OnInit {
 
   ngOnInit() {
     console.log('AboutComponent: init');
+  }
+
+  ngAfterContentInit() {
+    console.log('AboutComponent: after content init');
+  }
+
+  ngAfterViewInit() {
+    console.log('AboutComponent: after view init');
+  }
+
+  ngOnDestroy() {
+    console.log('AboutComponent: destroy');
   }
 
   buttonClicked = function (msg: string) {

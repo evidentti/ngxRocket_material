@@ -19,7 +19,9 @@ export interface RandomQuoteContext {
 @Injectable()
 export class QuoteService {
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient) {
+    log.debug('constructor');
+  }
 
   getRandomQuote(context: RandomQuoteContext): Observable<string> {
     log.debug('getRandomQuote');

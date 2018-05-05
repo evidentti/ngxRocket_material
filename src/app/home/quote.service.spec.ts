@@ -25,15 +25,16 @@ describe('QuoteService', () => {
     HttpCacheService,
     QuoteService,
     HttpTestingController
-  ], (htttpCacheService: HttpCacheService,
-      _quoteService: QuoteService,
-      _httpMock: HttpTestingController) => {
+  ], (httpCacheService: HttpCacheService,
+    _quoteService: QuoteService,
+    _httpMock: HttpTestingController) => {
 
-    quoteService = _quoteService;
-    httpMock = _httpMock;
+      quoteService = _quoteService;
+      httpMock = _httpMock;
 
-    htttpCacheService.cleanCache();
-  }));
+      httpCacheService.cleanCache();
+    }
+  ));
 
   afterEach(() => {
     httpMock.verify();
@@ -69,4 +70,8 @@ describe('QuoteService', () => {
       });
     });
   });
+
+  it('should be created', inject([QuoteService], (service: QuoteService) => {
+    expect(service).toBeTruthy();
+  }));
 });

@@ -13,6 +13,8 @@ const routes = {
 
 export interface SaunatakkiContext {
   key: string;
+  username: string;
+  password: string;
 }
 
 @Injectable()
@@ -24,10 +26,8 @@ export class SaunatakkiService {
 
   getUsers(context: SaunatakkiContext): Observable<string> {
     log.debug('getUsers', routes);
-    const username = 'user';
-    const password = 'password';
     const headerJson = {
-      'Authorization': 'Basic ' + btoa(username + ':' + password),
+      'Authorization': 'Basic ' + btoa(context.username + ':' + context.password),
       'Content-Type': 'application/json',
       'key': 'avain'
     };

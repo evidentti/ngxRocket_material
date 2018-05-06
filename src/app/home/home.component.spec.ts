@@ -15,17 +15,21 @@ describe('HomeComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-        imports: [
-          BrowserAnimationsModule,
-          FlexLayoutModule,
-          MaterialModule,
-          CoreModule,
-          SharedModule,
-          HttpClientTestingModule
-        ],
-        declarations: [HomeComponent],
-        providers: [QuoteService]
-      })
+      imports: [
+        BrowserAnimationsModule,
+        FlexLayoutModule,
+        MaterialModule,
+        CoreModule,
+        SharedModule,
+        HttpClientTestingModule
+      ],
+      declarations: [
+        HomeComponent
+      ],
+      providers: [
+        QuoteService
+      ]
+    })
       .compileComponents();
   }));
 

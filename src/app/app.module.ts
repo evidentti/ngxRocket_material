@@ -10,7 +10,8 @@ import { MaterialModule } from './material.module';
 import { environment } from '@env/environment';
 import { CoreModule } from '@app/core';
 import { SharedModule } from '@app/shared';
-import { HomeModule } from './home/home.module';
+// import { HomeModule } from './home/home.module';
+import { AuthModule } from './auth/auth.module';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
@@ -25,7 +26,8 @@ import { AppRoutingModule } from './app-routing.module';
     MaterialModule,
     CoreModule,
     SharedModule,
-    HomeModule,
+    // HomeModule,
+    AuthModule,
     AppRoutingModule
   ],
   declarations: [AppComponent],

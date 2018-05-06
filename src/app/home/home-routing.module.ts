@@ -5,10 +5,8 @@ import { Route, extract } from '@app/core';
 import { HomeComponent } from './home.component';
 
 const routes: Routes = [
-  Route.withShell([
-    { path: '', redirectTo: '/home', pathMatch: 'full' },
-    { path: 'home', component: HomeComponent, data: { title: extract('Home') } }
-  ])
+  // Module is lazy loaded, see app-routing.module.ts
+  { path: '', component: HomeComponent, data: { title: extract('Home') } }
 ];
 
 @NgModule({

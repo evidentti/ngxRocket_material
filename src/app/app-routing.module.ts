@@ -4,6 +4,7 @@ import { Route } from '@app/core';
 
 const routes: Routes = [
   Route.withShell([
+    { path: 'home', loadChildren: 'app/home/home.module#HomeModule' },
     { path: 'about', loadChildren: 'app/about/about.module#AboutModule' }
   ]),
   // Fallback when no prior route is matched

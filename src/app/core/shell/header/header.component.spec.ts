@@ -5,6 +5,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { MaterialModule } from '@app/material.module';
 import { I18nService } from '../../i18n.service';
 import { HeaderComponent } from './header.component';
+import { AuthService } from './../../../auth/auth.service';
 
 describe('HeaderComponent', () => {
   let component: HeaderComponent;
@@ -19,10 +20,11 @@ describe('HeaderComponent', () => {
       ],
       declarations: [HeaderComponent],
       providers: [
-        I18nService
+        I18nService,
+        AuthService
       ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

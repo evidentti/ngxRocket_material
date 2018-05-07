@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { MatSidenav } from '@angular/material';
 
 import { I18nService } from '../../i18n.service';
+import { AuthService } from './../../../auth/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -14,8 +15,7 @@ export class HeaderComponent implements OnInit {
 
   @Input() sidenav: MatSidenav;
 
-  constructor(private titleService: Title,
-              private i18nService: I18nService) { }
+  constructor(private titleService: Title, private i18nService: I18nService, public authService: AuthService) { }
 
   ngOnInit() { }
 

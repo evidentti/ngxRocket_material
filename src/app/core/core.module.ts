@@ -5,6 +5,7 @@ import { RouteReuseStrategy, RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
+import { AuthModule } from './../auth/auth.module';
 import { MaterialModule } from '@app/material.module';
 import { ShellComponent } from './shell/shell.component';
 import { HeaderComponent } from './shell/header/header.component';
@@ -22,6 +23,7 @@ import { CacheInterceptor } from './http/cache.interceptor';
     HttpClientModule,
     TranslateModule,
     FlexLayoutModule,
+    AuthModule,
     MaterialModule,
     RouterModule
   ],

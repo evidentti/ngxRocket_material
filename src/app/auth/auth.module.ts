@@ -3,26 +3,30 @@ import { CommonModule } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
+import { CoreModule } from '@app/core';
 import { SharedModule } from '@app/shared';
 import { MaterialModule } from '@app/material.module';
-import { HomeRoutingModule } from './home-routing.module';
-import { HomeComponent } from './home.component';
-import { QuoteService } from './quote.service';
+import { AuthRoutingModule } from './auth-routing.module';
+import { AuthComponent } from './auth.component';
+import { AuthService } from './auth.service';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   imports: [
     CommonModule,
     TranslateModule,
+    CoreModule,
     SharedModule,
     FlexLayoutModule,
     MaterialModule,
-    HomeRoutingModule
+    AuthRoutingModule,
+    RouterModule
   ],
   declarations: [
-    HomeComponent
+    AuthComponent
   ],
   providers: [
-    QuoteService
+    AuthService
   ]
 })
-export class HomeModule { }
+export class AuthModule { }

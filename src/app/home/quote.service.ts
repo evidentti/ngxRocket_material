@@ -23,10 +23,10 @@ export class QuoteService {
     log.debug('constructor');
   }
 
-  getRandomQuote(context: RandomQuoteContext): Observable<string> {
+  getRandomQuote(context: RandomQuoteContext, forceUpdate: boolean = false): Observable<string> {
     log.debug('getRandomQuote');
     return this.httpClient
-      .cache()
+      .cache(forceUpdate)
       .get(routes.quote(context))
       .pipe(
         map((body: any) => body.value),

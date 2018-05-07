@@ -24,7 +24,7 @@ export class SaunatakkiService {
     log.debug('constructor');
   }
 
-  getUsers(context: SaunatakkiContext): Observable<string> {
+  getUsers(context: SaunatakkiContext, forceUpdate: boolean = false): Observable<string> {
     log.debug('getUsers', routes);
     const headerJson = {
       'Authorization': 'Basic ' + btoa(context.username + ':' + context.password),
@@ -34,7 +34,7 @@ export class SaunatakkiService {
     const headers = new HttpHeaders(headerJson);
     // const params = new HttpParams().set('param1', 'value1');
     return this.httpClient
-      .cache()
+      .cache(forceUpdate)
       .get(routes.get(context), { headers: headers/*, params: params*/ })
       .pipe(
         map((body: any) => body.value),

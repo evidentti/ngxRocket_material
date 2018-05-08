@@ -4,6 +4,7 @@ import { Observable } from 'rxjs/Observable';
 
 import { ErrorHandlerInterceptor } from './error-handler.interceptor';
 import { CacheInterceptor } from './cache.interceptor';
+import { AuthInterceptor } from './auth-interceptor';
 
 // HttpClient is declared in a re-exported module, so we have to extend the original module to make it work properly
 // (see https://github.com/Microsoft/TypeScript/issues/13897)
@@ -26,6 +27,11 @@ declare module '@angular/common/http/src/client' {
      */
     skipErrorHandler(): HttpClient;
 
+    /**
+     * Adds authentication for this request.
+     * @return {HttpClient} The new instance.
+     */
+    addAuthentication(): HttpClient;
   }
 
 }
@@ -58,27 +64,38 @@ export const HTTP_DYNAMIC_INTERCEPTORS = new InjectionToken<HttpInterceptor>('HT
 export class HttpService extends HttpClient {
 
   constructor(private httpHandler: HttpHandler,
-              private injector: Injector,
-              @Optional() @Inject(HTTP_DYNAMIC_INTERCEPTORS) private interceptors: HttpInterceptor[] = []) {
+    private injector: Injector,
+    @Optional() @Inject(HTTP_DYNAMIC_INTERCEPTORS) private interceptors: HttpInterceptor[] = []) {
     super(httpHandler);
-
+    console.log('[HttpService]', 'constructor');
     if (!this.interceptors) {
       // Configure default interceptors that can be disabled here
-      this.interceptors = [this.injector.get(ErrorHandlerInterceptor)];
+      this.interceptors = [
+        this.injector.get(ErrorHandlerInterceptor)
+      ];
     }
   }
 
   cache(forceUpdate?: boolean): HttpClient {
+    console.log('[HttpService]', 'cache');
     const cacheInterceptor = this.injector.get(CacheInterceptor).configure({ update: forceUpdate });
     return this.addInterceptor(cacheInterceptor);
   }
 
   skipErrorHandler(): HttpClient {
+    console.log('[HttpService]', 'skipErrorHandler');
     return this.removeInterceptor(ErrorHandlerInterceptor);
+  }
+
+  addAuthentication(): HttpClient {
+    console.log('[HttpService]', 'skipErrorHandler');
+    const authInterceptor = this.injector.get(AuthInterceptor);
+    return this.addInterceptor(authInterceptor);
   }
 
   // Override the original method to wire interceptors when triggering the request.
   request(method?: any, url?: any, options?: any): any {
+    console.log('[HttpService]', 'request', method, url, options);
     const handler = this.interceptors.reduceRight(
       (next, interceptor) => new HttpInterceptorHandler(next, interceptor),
       this.httpHandler
@@ -87,6 +104,7 @@ export class HttpService extends HttpClient {
   }
 
   private removeInterceptor(interceptorType: Function): HttpService {
+    console.log('[HttpService]', 'removeInterceptor', interceptorType);
     return new HttpService(
       this.httpHandler,
       this.injector,
@@ -95,6 +113,7 @@ export class HttpService extends HttpClient {
   }
 
   private addInterceptor(interceptor: HttpInterceptor): HttpService {
+    console.log('[HttpService]', 'addInterceptor', interceptor);
     return new HttpService(
       this.httpHandler,
       this.injector,

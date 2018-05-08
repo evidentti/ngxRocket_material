@@ -5,6 +5,8 @@ import { of } from 'rxjs/observable/of';
 import { map, catchError } from 'rxjs/operators';
 import { Logger } from '@app/core';
 
+import 'rxjs/add/operator/catch';
+
 const log = new Logger('SaunatakkiService');
 
 const routes = {
@@ -27,7 +29,7 @@ export class SaunatakkiService {
   getUsers(context: SaunatakkiContext, forceUpdate: boolean = false): Observable<string> {
     log.debug('getUsers', routes);
     const headerJson = {
-      'Authorization': 'Basic ' + btoa(context.username + ':' + context.password),
+      // 'Authorization': 'Basic ' + btoa(context.username + ':' + context.password),
       'Content-Type': 'application/json',
       'key': 'avain'
     };
@@ -35,6 +37,8 @@ export class SaunatakkiService {
     // const params = new HttpParams().set('param1', 'value1');
     return this.httpClient
       .cache(forceUpdate)
+      // .addAuthentication()
+      // .skipErrorHandler()
       .get(routes.get(context), { headers: headers/*, params: params*/ })
       .pipe(
         map((body: any) => body.value),

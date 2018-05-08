@@ -22,8 +22,8 @@ const proxyConfig = [{
         pathRewrite: {
             '^/api/saunatakki': ''
         },
-        target: 'https://saunatakki.com:8080',
-        // target: 'http://localhost:3001',
+        // target: 'https://saunatakki.com:8080',
+        target: 'http://localhost:3001',
         changeOrigin: true,
         secure: false
     }

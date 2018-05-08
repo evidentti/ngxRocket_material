@@ -34,7 +34,7 @@ export class AboutComponent implements OnInit, OnDestroy, AfterContentInit, Afte
     this.isLoading = true;
     const username = 'user';
     const password = 'password';
-    this.saunatakkiService.getUsers({ key: 'avain3', username: username, password: password })
+    this.saunatakkiService.getUsers({ key: 'avain', username: username, password: password })
       .pipe(finalize(() => { this.isLoading = false; }))
       .subscribe((result: string) => { this.result = result; });
   }

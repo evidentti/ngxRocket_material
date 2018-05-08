@@ -4,8 +4,8 @@ import { RouterTestingModule } from '@angular/router/testing';
 
 import { MaterialModule } from '@app/material.module';
 import { I18nService } from '../../i18n.service';
+import { AuthService } from '../../auth/auth.service';
 import { HeaderComponent } from './header.component';
-import { AuthService } from './../../../auth/auth.service';
 
 describe('HeaderComponent', () => {
   let component: HeaderComponent;

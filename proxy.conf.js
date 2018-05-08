@@ -15,7 +15,7 @@ const proxyConfig = [{
         },
         target: 'https://api.chucknorris.io',
         changeOrigin: true,
-        secure: false
+        secure: true
     },
     {
         context: '/api/saunatakki',
@@ -23,8 +23,9 @@ const proxyConfig = [{
             '^/api/saunatakki': ''
         },
         target: 'https://saunatakki.com:8080',
+        // target: 'http://localhost:3001',
         changeOrigin: true,
-        secure: false
+        secure: true
     }
 ];
 

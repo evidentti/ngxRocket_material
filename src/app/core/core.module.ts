@@ -5,13 +5,13 @@ import { RouteReuseStrategy, RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
-import { AuthModule } from './../auth/auth.module';
 import { MaterialModule } from '@app/material.module';
 import { ShellComponent } from './shell/shell.component';
 import { HeaderComponent } from './shell/header/header.component';
 import { RouteReusableStrategy } from './route-reusable-strategy';
 import { I18nService } from './i18n.service';
 import { HttpService } from './http/http.service';
+import { AuthService } from './auth/auth.service';
 import { HttpCacheService } from './http/http-cache.service';
 import { ApiPrefixInterceptor } from './http/api-prefix.interceptor';
 import { ErrorHandlerInterceptor } from './http/error-handler.interceptor';
@@ -23,7 +23,6 @@ import { CacheInterceptor } from './http/cache.interceptor';
     HttpClientModule,
     TranslateModule,
     FlexLayoutModule,
-    AuthModule,
     MaterialModule,
     RouterModule
   ],
@@ -33,6 +32,7 @@ import { CacheInterceptor } from './http/cache.interceptor';
   ],
   providers: [
     I18nService,
+    AuthService,
     HttpCacheService,
     ApiPrefixInterceptor,
     ErrorHandlerInterceptor,

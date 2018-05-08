@@ -25,7 +25,7 @@ const proxyConfig = [{
         target: 'https://saunatakki.com:8080',
         // target: 'http://localhost:3001',
         changeOrigin: true,
-        secure: true
+        secure: false
     }
 ];
 

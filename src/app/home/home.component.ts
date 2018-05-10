@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy, AfterContentInit, AfterViewInit } from '@angular/core';
 import { finalize } from 'rxjs/operators';
 import { Logger } from '@app/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 const log = new Logger('HomeComponent');
 
@@ -15,7 +16,11 @@ export class HomeComponent implements OnInit, OnDestroy, AfterContentInit, After
   isLoading: boolean;
   subjects: Array<any>;
 
-  constructor() {
+  isLinear = true;
+  firstFormGroup: FormGroup;
+  secondFormGroup: FormGroup;
+
+  constructor(private formBuilder: FormBuilder) {
     log.debug('constructor');
   }
 
@@ -25,6 +30,13 @@ export class HomeComponent implements OnInit, OnDestroy, AfterContentInit, After
     this.subjects.push({ id: 1000, code: 'subject_1000' });
     this.subjects.push({ id: 1001, code: 'subject_1001' });
     this.subjects.push({ id: 1002, code: 'subject_1002' });
+
+    this.firstFormGroup = this.formBuilder.group({
+      firstCtrl: ['', Validators.required]
+    });
+    this.secondFormGroup = this.formBuilder.group({
+      secondCtrl: ['', Validators.required]
+    });
   }
 
   ngAfterContentInit() {
@@ -37,6 +49,10 @@ export class HomeComponent implements OnInit, OnDestroy, AfterContentInit, After
 
   ngOnDestroy() {
     log.debug('destroy');
+  }
+
+  selected(subject: any) {
+    log.debug('selected', subject);
   }
 
 }

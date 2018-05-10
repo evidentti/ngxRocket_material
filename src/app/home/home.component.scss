@@ -12,3 +12,16 @@
   width: 1em;
   height: 1em;
 }
+
+.border {
+  border-style: solid;
+  border-width: 2px;
+}
+
+::ng-deep .mat-list-item {
+  color: rgb(33, 150, 243) !important;
+}
+
+::ng-deep .mat-list-item .mat-list-item-content .mat-pseudo-checkbox {
+  display: none !important;
+}

@@ -2,8 +2,6 @@ import { Component, OnInit, OnDestroy, AfterContentInit, AfterViewInit } from '@
 import { finalize } from 'rxjs/operators';
 import { Logger } from '@app/core';
 
-import { QuoteService } from './quote.service';
-
 const log = new Logger('HomeComponent');
 
 @Component({
@@ -16,16 +14,12 @@ export class HomeComponent implements OnInit, OnDestroy, AfterContentInit, After
   quote: string;
   isLoading: boolean;
 
-  constructor(private quoteService: QuoteService) {
+  constructor() {
     log.debug('constructor');
   }
 
   ngOnInit() {
     log.debug('init');
-    this.isLoading = true;
-    this.quoteService.getRandomQuote({ category: 'dev' })
-      .pipe(finalize(() => { this.isLoading = false; }))
-      .subscribe((quote: string) => { this.quote = quote; });
   }
 
   ngAfterContentInit() {

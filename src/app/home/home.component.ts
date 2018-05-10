@@ -13,6 +13,7 @@ export class HomeComponent implements OnInit, OnDestroy, AfterContentInit, After
 
   quote: string;
   isLoading: boolean;
+  subjects: Array<any>;
 
   constructor() {
     log.debug('constructor');
@@ -20,6 +21,10 @@ export class HomeComponent implements OnInit, OnDestroy, AfterContentInit, After
 
   ngOnInit() {
     log.debug('init');
+    this.subjects = new Array();
+    this.subjects.push({ id: 1000, code: 'subject_1000' });
+    this.subjects.push({ id: 1001, code: 'subject_1001' });
+    this.subjects.push({ id: 1002, code: 'subject_1002' });
   }
 
   ngAfterContentInit() {

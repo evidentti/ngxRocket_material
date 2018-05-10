@@ -11,9 +11,11 @@ export const environment = {
   version: env.npm_package_version + '-dev',
   // serverUrl: '/saunatakki',
   serverUrl: '/api',
-  defaultLanguage: 'en-US',
+  defaultLanguage: 'fi-FI',
   supportedLanguages: [
     'en-US',
-    'fr-FR'
+    'fr-FR',
+    'fi-FI',
+    'sv-SE'
   ]
 };

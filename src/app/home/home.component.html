@@ -1,14 +1,16 @@
 <div class="container">
-  <mat-card>
-    <p>
-      <img class="logo" src="assets/ngx-rocket-logo.png" alt="angular logo"/>
-    </p>
-    <mat-card-content>
-      <mat-card-title translate>Hello world !</mat-card-title>
-      <mat-card-subtitle>
-        <app-loader [isLoading]="isLoading" size="1.5"></app-loader>
-        <q [hidden]="isLoading">{{quote}}</q>
-      </mat-card-subtitle>
-    </mat-card-content>
-  </mat-card>
+    <mat-card>
+        <mat-card-content fxLayout="row" fxLayoutAlign="start center">
+            <img class="logo" src="assets/tieto-logo.png" alt="Tieto logo" />
+            <div class="spacer"></div>
+            <mat-card-title translate>Ajanvaraus</mat-card-title>
+        </mat-card-content>
+        <mat-card-content>
+            <mat-list>
+                <mat-list-item *ngFor="let subject of subjects">
+                  <span translate>{{subject.code}}</span>
+                </mat-list-item>
+            </mat-list>
+        </mat-card-content>
+    </mat-card>
 </div>

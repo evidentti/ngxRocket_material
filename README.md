@@ -1,4 +1,4 @@
-# ngxRocket_material
+# ajanvaraus
 
 This project was generated with [ngX-Rocket](https://github.com/ngx-rocket/generator-ngx-rocket/)
 version 4.2.0

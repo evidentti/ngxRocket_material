@@ -3,7 +3,7 @@
     "version": "4.2.0",
     "props": {
       "location": "path",
-      "appName": "ngxRocket_material",
+      "appName": "ajanvaraus",
       "target": [
         "web"
       ],

@@ -5,7 +5,7 @@ import { Subject } from 'rxjs/Subject';
 import { extract, I18nService } from './i18n.service';
 
 const defaultLanguage = 'en-US';
-const supportedLanguages = ['eo', 'en-US', 'fr-FR'];
+const supportedLanguages = ['eo', 'en-US', 'fr-FR', 'fi-FI', 'sv-SE'];
 
 class MockTranslateService {
 
@@ -46,19 +46,19 @@ describe('I18nService', () => {
     I18nService,
     TranslateService
   ], (_i18nService: I18nService,
-      _translateService: TranslateService) => {
+    _translateService: TranslateService) => {
 
-    i18nService = _i18nService;
-    translateService = _translateService;
+      i18nService = _i18nService;
+      translateService = _translateService;
 
-    // Create spies
-    onLangChangeSpy = jasmine.createSpy('onLangChangeSpy');
-    translateService.onLangChange
-      .subscribe((event: LangChangeEvent) => {
-        onLangChangeSpy(event.lang);
-      });
-    spyOn(translateService, 'use').and.callThrough();
-  }));
+      // Create spies
+      onLangChangeSpy = jasmine.createSpy('onLangChangeSpy');
+      translateService.onLangChange
+        .subscribe((event: LangChangeEvent) => {
+          onLangChangeSpy(event.lang);
+        });
+      spyOn(translateService, 'use').and.callThrough();
+    }));
 
   afterEach(() => {
     // Cleanup

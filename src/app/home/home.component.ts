@@ -17,7 +17,6 @@ export class HomeComponent implements OnInit, OnDestroy, AfterContentInit, After
   subjects: Array<any>;
 
   isLinear = false;
-  subjectFormGroup: FormGroup;
   placeFormGroup: FormGroup;
   timeFormGroup: FormGroup;
   personFormGroup: FormGroup;
@@ -34,10 +33,10 @@ export class HomeComponent implements OnInit, OnDestroy, AfterContentInit, After
     this.subjects.push({ id: 1000, code: 'subject_1000' });
     this.subjects.push({ id: 1001, code: 'subject_1001' });
     this.subjects.push({ id: 1002, code: 'subject_1002' });
+    this.subjects.push({ id: 1000, code: 'subject_1003' });
+    this.subjects.push({ id: 1001, code: 'subject_1004' });
+    this.subjects.push({ id: 1002, code: 'subject_1005' });
 
-    this.subjectFormGroup = this.formBuilder.group({
-      subjectCtrl: ['', Validators.required]
-    });
     this.placeFormGroup = this.formBuilder.group({
       placeCtrl: ['', Validators.required]
     });
@@ -56,7 +55,7 @@ export class HomeComponent implements OnInit, OnDestroy, AfterContentInit, After
   }
 
   selected(subject: any) {
-    log.debug('selected', subject);
+    log.debug('selected', subject, (this.selectedSubject === subject));
     this.selectedSubject = (this.selectedSubject === subject) ? undefined : subject;
   }
 

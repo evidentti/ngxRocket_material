@@ -15,13 +15,13 @@ export class HomeComponent implements OnInit, OnDestroy, AfterContentInit, After
   quote: string;
   isLoading: boolean;
   subjects: Array<any>;
+  places: Array<any>;
 
   isLinear = false;
-  placeFormGroup: FormGroup;
-  timeFormGroup: FormGroup;
   personFormGroup: FormGroup;
 
   selectedSubject: any;
+  selectedPlace: any;
 
   constructor(private formBuilder: FormBuilder) {
     log.debug('constructor');
@@ -37,8 +37,16 @@ export class HomeComponent implements OnInit, OnDestroy, AfterContentInit, After
     this.subjects.push({ id: 1001, code: 'subject_1004' });
     this.subjects.push({ id: 1002, code: 'subject_1005' });
 
-    this.placeFormGroup = this.formBuilder.group({
-      placeCtrl: ['', Validators.required]
+    this.places = new Array();
+    this.places.push({ id: 1000, code: 'place_1000' });
+    this.places.push({ id: 1001, code: 'place_1001' });
+    this.places.push({ id: 1002, code: 'place_1002' });
+    this.places.push({ id: 1000, code: 'place_1003' });
+    this.places.push({ id: 1001, code: 'place_1004' });
+    this.places.push({ id: 1002, code: 'place_1005' });
+
+    this.personFormGroup = this.formBuilder.group({
+      personCtrl: ['', Validators.required]
     });
   }
 
@@ -54,9 +62,14 @@ export class HomeComponent implements OnInit, OnDestroy, AfterContentInit, After
     log.debug('destroy');
   }
 
-  selected(subject: any) {
-    log.debug('selected', subject, (this.selectedSubject === subject));
+  subjectSelected(subject: any) {
+    log.debug('subjectSelected', subject, (this.selectedSubject === subject));
     this.selectedSubject = (this.selectedSubject === subject) ? undefined : subject;
+  }
+
+  placeSelected(place: any) {
+    log.debug('placeSelected', place, (this.selectedPlace === place));
+    this.selectedPlace = (this.selectedPlace === place) ? undefined : place;
   }
 
 }

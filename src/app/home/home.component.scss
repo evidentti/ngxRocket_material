@@ -41,6 +41,10 @@
   padding: 1em;
 }
 
+.left {
+  text-align: left;
+}
+
 ::ng-deep .mat-list-item {
   // color: rgb(33, 150, 243) !important;
   color: rgb(18, 125, 62) !important;
@@ -58,3 +62,9 @@
 // ::ng-deep .mat-step-label {
 //   display: none !important;
 // }
+
+@media only screen and (max-width: 600px) {
+  ::ng-deep .mat-step-label {
+    display: none !important;
+  }
+}

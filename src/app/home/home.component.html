@@ -11,11 +11,14 @@
             <mat-horizontal-stepper [linear]="isLinear" #stepper>
                 <mat-step>
                     <ng-template matStepLabel>Aihe</ng-template>
+                    <div class="spacer" fxHide.lt-md></div>
+                    <div class="left">Donec orci sem, fermentum nec ipsum et, molestie eleifend ipsum. Sed vitae fermentum felis, ac ultrices mauris. Pellentesque sit amet.</div>
                     <div class="spacer"></div>
+                    <div class="spacer" fxHide.lt-md></div>
                     <mat-selection-list #subjectSelectionList class="">
-                        <mat-list-option *ngFor="let subject of subjects" (click)=selected(subject) [selected]="subject === selectedSubject">
+                        <mat-list-option *ngFor="let subject of subjects" (click)=subjectSelected(subject) [selected]="subject === selectedSubject">
                             <div fxLayout="row" fxLayoutAlign="start center">
-                                <div fxFlex translate>{{subject.code}}</div>
+                                <div class="left" fxFlex translate>{{subject.code}}</div>
                             </div>
                             <mat-divider></mat-divider>
                         </mat-list-option>
@@ -25,23 +28,61 @@
                         <button mat-raised-button color="primary" [disabled]="!selectedSubject" matStepperNext>Next</button>
                     </div>
                 </mat-step>
-                <mat-step [stepControl]="placeFormGroup">
-                    <form [formGroup]="placeFormGroup">
-                        <ng-template matStepLabel>Paikka</ng-template>
-                        <mat-form-field>
-                            <input matInput placeholder="Address" formControlName="placeCtrl" required>
-                        </mat-form-field>
-                        <div>
-                            <button mat-raised-button color="primary" matStepperPrevious><span translate>Back</span></button>
-                            <button mat-raised-button color="primary" matStepperNext><span translate>Next</span></button>
-                        </div>
-                    </form>
+                <mat-step>
+                    <ng-template matStepLabel>Paikka</ng-template>
+                    <div class="spacer" fxHide.lt-md></div>
+                    <div class="left">Nunc imperdiet, urna ut ultrices pellentesque, sem ex accumsan mauris, sit amet dapibus dolor arcu ut odio. Nunc ultrices arcu.</div>
+                    <div class="spacer"></div>
+                    <div class="spacer" fxHide.lt-md></div>
+                    <mat-selection-list #placeSelectionList class="">
+                        <mat-list-option *ngFor="let place of places" (click)=placeSelected(place) [selected]="place === selectedPlace">
+                            <div fxLayout="row" fxLayoutAlign="start center">
+                                <div class="left" fxFlex translate>{{place.code}}</div>
+                            </div>
+                            <mat-divider></mat-divider>
+                        </mat-list-option>
+                    </mat-selection-list>
+                    <div class="spacer-5"></div>
+                    <div>
+                        <button mat-raised-button color="primary" matStepperPrevious><span translate>Back</span></button>
+                        <button mat-raised-button color="primary" [disabled]="!selectedPlace" matStepperNext><span translate>Next</span></button>
+                    </div>
+                </mat-step>
+                <mat-step>
+                    <ng-template matStepLabel>Aika</ng-template>
+                    <div class="spacer" fxHide.lt-md></div>
+                    <div class="left">Ut et leo consequat, sollicitudin purus sit amet, feugiat lacus. Nullam vitae sapien mattis, rutrum justo vel, cursus velit. Donec.</div>
+                    <div class="spacer"></div>
+                    <div class="spacer" fxHide.lt-md></div>
+                    <mat-form-field>
+                        <input matInput [matDatepicker]="picker" placeholder="Valitse päivä">
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
+                    <div class="spacer-5"></div>
+                    <div>
+                        <button mat-raised-button color="primary" matStepperPrevious><span translate>Back</span></button>
+                        <button mat-raised-button color="primary" matStepperNext><span translate>Next</span></button>
+                    </div>
+                </mat-step>
+                <mat-step>
+                    <ng-template matStepLabel>Toimihenkilö</ng-template>
+                    <div class="spacer" fxHide.lt-md></div>
+                    <div class="left">Maecenas at imperdiet risus, a viverra arcu. Quisque ut fringilla turpis. Nam dapibus a lectus congue porta. Fusce eu elit.</div>
+                    <div class="spacer"></div>
+                    <div class="spacer" fxHide.lt-md></div>
+                    <div class="spacer-5"></div>
+                    <div>
+                        <button mat-raised-button color="primary" matStepperPrevious><span translate>Back</span></button>
+                        <button mat-raised-button color="primary" matStepperNext><span translate>Next</span></button>
+                    </div>
                 </mat-step>
                 <mat-step>
                     <ng-template matStepLabel>Valmis</ng-template>
                     You are now done.
+                    <div class="spacer-5"></div>
                     <div>
-                        <button mat-button color="primary" matStepperPrevious>Back</button>
+                        <button mat-button color="primary" matStepperPrevious><span translate>Back</span></button>
                         <button mat-button color="primary" (click)="stepper.reset()">Reset</button>
                     </div>
                 </mat-step>

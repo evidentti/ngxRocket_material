@@ -16,6 +16,7 @@ export class HomeComponent implements OnInit, OnDestroy, AfterContentInit, After
   isLoading: boolean;
   subjects: Array<any>;
   places: Array<any>;
+  times: Array<any>;
 
   isLinear = false;
   personFormGroup: FormGroup;
@@ -33,17 +34,31 @@ export class HomeComponent implements OnInit, OnDestroy, AfterContentInit, After
     this.subjects.push({ id: 1000, code: 'subject_1000' });
     this.subjects.push({ id: 1001, code: 'subject_1001' });
     this.subjects.push({ id: 1002, code: 'subject_1002' });
-    this.subjects.push({ id: 1000, code: 'subject_1003' });
-    this.subjects.push({ id: 1001, code: 'subject_1004' });
-    this.subjects.push({ id: 1002, code: 'subject_1005' });
+    this.subjects.push({ id: 1003, code: 'subject_1003' });
+    this.subjects.push({ id: 1004, code: 'subject_1004' });
+    this.subjects.push({ id: 1005, code: 'subject_1005' });
 
     this.places = new Array();
-    this.places.push({ id: 1000, code: 'place_1000' });
-    this.places.push({ id: 1001, code: 'place_1001' });
-    this.places.push({ id: 1002, code: 'place_1002' });
-    this.places.push({ id: 1000, code: 'place_1003' });
-    this.places.push({ id: 1001, code: 'place_1004' });
-    this.places.push({ id: 1002, code: 'place_1005' });
+    this.places.push({ id: 2000, code: 'place_1000' });
+    this.places.push({ id: 2001, code: 'place_1001' });
+    this.places.push({ id: 2002, code: 'place_1002' });
+    this.places.push({ id: 2003, code: 'place_1003' });
+    this.places.push({ id: 2004, code: 'place_1004' });
+    this.places.push({ id: 2005, code: 'place_1005' });
+
+    this.times = new Array();
+    this.times.push({ id: 3000, time: '2017-05-23T09:35:12.000Z', length: 60 });
+    this.times.push({ id: 3001, time: '2017-05-23T09:35:12.000Z', length: 60 });
+    this.times.push({ id: 3002, time: '2017-05-23T09:35:12.000Z', length: 60 });
+    this.times.push({ id: 3003, time: '2017-05-23T09:35:12.000Z', length: 60 });
+    this.times.push({ id: 3004, time: '2017-05-23T09:35:12.000Z', length: 60 });
+    this.times.push({ id: 3005, time: '2017-05-23T09:35:12.000Z', length: 60 });
+    this.times.push({ id: 3006, time: '2017-05-23T09:35:12.000Z', length: 60 });
+    this.times.push({ id: 3007, time: '2017-05-23T09:35:12.000Z', length: 60 });
+    this.times.push({ id: 3008, time: '2017-05-23T09:35:12.000Z', length: 60 });
+    this.times.push({ id: 3009, time: '2017-05-23T09:35:12.000Z', length: 60 });
+    this.times.push({ id: 3010, time: '2017-05-23T09:35:12.000Z', length: 60 });
+    this.times.push({ id: 3011, time: '2017-05-23T09:35:12.000Z', length: 60 });
 
     this.personFormGroup = this.formBuilder.group({
       personCtrl: ['', Validators.required]

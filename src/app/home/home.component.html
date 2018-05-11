@@ -54,11 +54,19 @@
                     <div class="left">Ut et leo consequat, sollicitudin purus sit amet, feugiat lacus. Nullam vitae sapien mattis, rutrum justo vel, cursus velit. Donec.</div>
                     <div class="spacer"></div>
                     <div class="spacer" fxHide.lt-md></div>
-                    <mat-form-field>
+                    <mat-grid-list cols="4" rowHeight="100px">
+                        <mat-grid-tile *ngFor="let time of times">
+                            <div fxLayout="column">
+                                <div>{{time.time | date:'fullDate'}}</div>
+                                <div class="left">{{time.length}} <span>min</span></div>
+                            </div>
+                        </mat-grid-tile>
+                    </mat-grid-list>
+                    <!-- <mat-form-field>
                         <input matInput [matDatepicker]="picker" placeholder="Valitse päivä">
                         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                         <mat-datepicker #picker></mat-datepicker>
-                    </mat-form-field>
+                    </mat-form-field> -->
                     <div class="spacer-5"></div>
                     <div>
                         <button mat-raised-button color="primary" matStepperPrevious><span translate>Back</span></button>

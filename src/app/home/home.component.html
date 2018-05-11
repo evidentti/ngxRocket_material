@@ -1,12 +1,13 @@
 <div class="container">
     <mat-card>
         <mat-card-content fxLayout="row" fxLayoutAlign="start center">
-            <img class="logo" src="assets/tieto-logo.png" alt="Tieto logo" />
+            <img class="logo" src="assets/sp-logo.jpeg" alt="Säästöpankki logo" />
             <div class="spacer"></div>
-            <mat-card-title translate>Ajanvaraus</mat-card-title>
         </mat-card-content>
+    </mat-card>
+    <div class="spacer"></div>
+    <mat-card>
         <mat-card-content>
-
             <mat-horizontal-stepper [linear]="isLinear" #stepper>
                 <mat-step [stepControl]="subjectFormGroup">
                     <ng-template matStepLabel>Aihe</ng-template>

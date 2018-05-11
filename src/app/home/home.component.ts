@@ -19,6 +19,8 @@ export class HomeComponent implements OnInit, OnDestroy, AfterContentInit, After
   isLinear = false;
   subjectFormGroup: FormGroup;
   placeFormGroup: FormGroup;
+  timeFormGroup: FormGroup;
+  personFormGroup: FormGroup;
 
   selectedSubject: any;
 
@@ -34,10 +36,10 @@ export class HomeComponent implements OnInit, OnDestroy, AfterContentInit, After
     this.subjects.push({ id: 1002, code: 'subject_1002' });
 
     this.subjectFormGroup = this.formBuilder.group({
-      firstCtrl: ['', Validators.required]
+      subjectCtrl: ['', Validators.required]
     });
     this.placeFormGroup = this.formBuilder.group({
-      secondCtrl: ['', Validators.required]
+      placeCtrl: ['', Validators.required]
     });
   }
 

@@ -13,15 +13,48 @@
   height: 1em;
 }
 
+.spacer-2 {
+  width: 2em;
+  height: 2em;
+}
+
+.spacer-5 {
+  width: 5em;
+  height: 5em;
+}
+
+.spacer-30 {
+  width: 2em;
+  height: 30em;
+}
+
 .border {
   border-style: solid;
   border-width: 2px;
 }
 
-::ng-deep .mat-list-item {
-  color: rgb(33, 150, 243) !important;
+.test {
+  height: 100%;
 }
 
-::ng-deep .mat-list-item .mat-list-item-content .mat-pseudo-checkbox {
-  display: none !important;
+.padding {
+  padding: 1em;
 }
+
+::ng-deep .mat-list-item {
+  // color: rgb(33, 150, 243) !important;
+  color: rgb(18, 125, 62) !important;
+  // color: #00aec7 !important;
+}
+
+::ng-deep .mat-pseudo-checkbox.mat-pseudo-checkbox-checked {
+  background-color: rgb(18, 125, 62) !important;
+}
+
+// ::ng-deep .mat-list-item .mat-list-item-content .mat-pseudo-checkbox {
+//   display: none !important;
+// }
+
+// ::ng-deep .mat-step-label {
+//   display: none !important;
+// }

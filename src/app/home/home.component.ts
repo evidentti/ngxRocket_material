@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy, AfterContentInit, AfterViewInit } from '@angular/core';
 import { finalize } from 'rxjs/operators';
 import { Logger } from '@app/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+// import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 const log = new Logger('HomeComponent');
 
@@ -19,12 +19,12 @@ export class HomeComponent implements OnInit, OnDestroy, AfterContentInit, After
   times: Array<any>;
 
   isLinear = false;
-  personFormGroup: FormGroup;
+  // personFormGroup: FormGroup;
 
   selectedSubject: any;
   selectedPlace: any;
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(/*private formBuilder: FormBuilder*/) {
     log.debug('constructor');
   }
 
@@ -60,9 +60,9 @@ export class HomeComponent implements OnInit, OnDestroy, AfterContentInit, After
     this.times.push({ id: 3010, time: '2017-05-23T09:35:12.000Z', length: 60 });
     this.times.push({ id: 3011, time: '2017-05-23T09:35:12.000Z', length: 60 });
 
-    this.personFormGroup = this.formBuilder.group({
-      personCtrl: ['', Validators.required]
-    });
+    // this.personFormGroup = this.formBuilder.group({
+    //   personCtrl: ['', Validators.required]
+    // });
   }
 
   ngAfterContentInit() {

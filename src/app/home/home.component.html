@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" fxFill fxLayout="column">
     <mat-card>
         <mat-card-content fxLayout="row" fxLayoutAlign="start center">
             <img class="logo" src="assets/sp-logo.jpeg" alt="Säästöpankki logo" />
@@ -6,7 +6,7 @@
         </mat-card-content>
     </mat-card>
     <!-- <div class="spacer"></div> -->
-    <mat-card>
+    <mat-card fxFlex>
         <mat-card-content>
             <mat-horizontal-stepper [linear]="isLinear" #stepper>
                 <mat-step>
@@ -16,7 +16,7 @@
                     <div class="spacer"></div>
                     <div class="spacer" fxHide.lt-md></div>
                     <mat-selection-list #subjectSelectionList class="">
-                        <mat-list-option *ngFor="let subject of subjects" (click)=subjectSelected(subject) [selected]="subject === selectedSubject">
+                        <mat-list-option *ngFor="let subject of subjects" (click)="subjectSelected(subject)" [selected]="subject === selectedSubject">
                             <div fxLayout="row" fxLayoutAlign="start center">
                                 <div class="left" fxFlex translate>{{subject.code}}</div>
                             </div>
@@ -35,7 +35,7 @@
                     <div class="spacer"></div>
                     <div class="spacer" fxHide.lt-md></div>
                     <mat-selection-list #placeSelectionList class="">
-                        <mat-list-option *ngFor="let place of places" (click)=placeSelected(place) [selected]="place === selectedPlace">
+                        <mat-list-option *ngFor="let place of places" (click)="placeSelected(place)" [selected]="place === selectedPlace">
                             <div fxLayout="row" fxLayoutAlign="start center">
                                 <div class="left" fxFlex translate>{{place.code}}</div>
                             </div>

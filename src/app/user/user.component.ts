@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy, AfterContentInit, AfterViewInit } from '@angular/core';
 import { Logger } from '@app/core';
 
-const log = new Logger('AboutComponent');
+const log = new Logger('UserComponent');
 
 @Component({
   selector: 'app-user',
@@ -20,7 +20,7 @@ export class UserComponent implements OnInit, OnDestroy, AfterContentInit, After
   ngAfterContentInit() {
     log.debug('after content init');
   }
-ƒ
+
   ngAfterViewInit() {
     log.debug('after view init');
   }

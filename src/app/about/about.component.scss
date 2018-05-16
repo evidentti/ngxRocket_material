@@ -1,8 +1,18 @@
+@import "src/theme/theme-variables";
+
 .container {
   text-align: center;
-  padding: 1rem;
+  padding: 1em;
 }
 
-.mat-icon {
-  vertical-align: middle;
+.spacer {
+  height: 1em;
+  width: 1em;
+}
+
+@media ($mat-xsmall) {
+  .container {
+    text-align: center;
+    padding: 0;
+  }
 }

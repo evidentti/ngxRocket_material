@@ -1,73 +1,14 @@
-<div class="container">
-    <mat-card>
-        <h1>
-      <mat-card-title translate>APP_NAME</mat-card-title>
-    </h1>
-        <mat-card-content>
-            <mat-icon>code</mat-icon>
-            <span translate>Version</span> {{version}}
-            <div>{{clicked}} <span translate>clicked</span></div>
-        </mat-card-content>
-    </mat-card>
-    <br/>
-    <mat-card>
-        <mat-card-content>
-            <h3>Basic Buttons</h3>
-            <div class="button-row">
-                <button mat-button (click)="buttonClicked('basic')">Basic</button>
-                <button mat-button (click)="buttonClicked('primary')" color="primary">Primary</button>
-                <button mat-button (click)="buttonClicked('accent')" color="accent">Accent</button>
-                <button mat-button (click)="buttonClicked('warn')" color="warn">Warn</button>
-                <button mat-button (click)="buttonClicked('disabled')" disabled>Disabled</button>
-            </div>
-            <br/>
-            <h3>Raised Buttons</h3>
-            <div class="button-row">
-                <button mat-raised-button (click)="buttonClicked('basic raised')">Basic</button>
-                <button mat-raised-button (click)="buttonClicked('primary raised')" color="primary">Primary</button>
-                <button mat-raised-button (click)="buttonClicked('accent raised')" color="accent">Accent</button>
-                <button mat-raised-button (click)="buttonClicked('warn raised')" color="warn">Warn</button>
-                <button mat-raised-button (click)="buttonClicked('disabled raised')" disabled>Disabled</button>
-            </div>
-            <br/>
-            <h3>Icon Buttons</h3>
-            <div class="button-row">
-                <button mat-icon-button (click)="buttonClicked('basic icon')">
-                    <mat-icon aria-label="Example icon-button with a heart icon">favorite</mat-icon>
-                </button>
-                <button mat-icon-button (click)="buttonClicked('primary icon')" color="primary">
-                    <mat-icon aria-label="Example icon-button with a heart icon">favorite</mat-icon>
-                </button>
-                <button mat-icon-button (click)="buttonClicked('accent icon')" color="accent">
-                    <mat-icon aria-label="Example icon-button with a heart icon">favorite</mat-icon>
-                </button>
-                <button mat-icon-button (click)="buttonClicked('warn icon')" color="warn">
-                    <mat-icon aria-label="Example icon-button with a heart icon">favorite</mat-icon>
-                </button>
-                <button mat-icon-button (click)="buttonClicked('disabled icon')" disabled>
-                    <mat-icon aria-label="Example icon-button with a heart icon">favorite</mat-icon>
-                </button>
-            </div>
-            <br/>
-            <h3>Toggle Button</h3>
-            <div>
-                <mat-button-toggle (change)="buttonClicked('toggle ' + $event.source.checked)">Toggle me!</mat-button-toggle>
-            </div>
-        </mat-card-content>
-    </mat-card>
-    <br/>
-    <mat-card>
-        <mat-card-content>
-            <h3>Input</h3>
-            <form class="example-form">
-                <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Favorite food" [value]="text" />
-                </mat-form-field>
-
-                <mat-form-field class="example-full-width">
-                    <textarea matInput placeholder="Leave a comment"></textarea>
-                </mat-form-field>
-            </form>
-        </mat-card-content>
-    </mat-card>
+<div class="container" fxFill>
+  <mat-card fxFill>
+      <mat-card-content fxFill fxLayout="column" fxLayoutAlign="start center">
+          <mat-card-title translate>About</mat-card-title>
+          <mat-card-subtitle>subtitle</mat-card-subtitle>
+          <div fxFlex></div>
+          <div fxLayout="row" fxLayoutAlign="center center">
+              <button mat-raised-button routerLink="/user" routerLinkActive="active" color="primary">
+                  <span translate>Prev</span>
+              </button>
+          </div>
+      </mat-card-content>
+  </mat-card>
 </div>

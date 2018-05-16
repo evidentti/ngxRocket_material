@@ -1,18 +1,14 @@
-<div class="container">
-    <mat-card>
-        <p>
-            <img class="logo" src="assets/ngx-rocket-logo.png" alt="angular logo" />
-        </p>
-        <mat-card-content>
-            <mat-card-title translate>Hello world !</mat-card-title>
-            <mat-card-subtitle>
-                <app-loader [isLoading]="isLoading" size="1.5"></app-loader>
-                <q [hidden]="isLoading">{{quote}}</q>
-            </mat-card-subtitle>
-            <button mat-button routerLink="/about" routerLinkActive="active">
-                <mat-icon>info</mat-icon>
-                <span translate>About</span>
-            </button>
-        </mat-card-content>
-    </mat-card>
+<div class="container" fxFill>
+  <mat-card fxFill>
+      <mat-card-content fxFill fxLayout="column" fxLayoutAlign="start center">
+          <mat-card-title translate>Home</mat-card-title>
+          <mat-card-subtitle>subtitle</mat-card-subtitle>
+          <div fxFlex></div>
+          <div fxLayout="row" fxLayoutAlign="center center">
+              <button mat-raised-button routerLink="/user" routerLinkActive="active" color="primary">
+                  <span translate>Next</span>
+              </button>
+          </div>
+      </mat-card-content>
+  </mat-card>
 </div>

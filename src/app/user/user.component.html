@@ -1,12 +1,18 @@
-<div class="container">
-    <mat-card>
-        <h1>
-    <mat-card-title translate>APP_NAME</mat-card-title>
-  </h1>
-        <mat-card-content>
-            <mat-icon>code</mat-icon>
-            <span translate>Version</span>
+<div class="container" fxFill>
+    <mat-card fxFill>
+        <mat-card-content fxFill fxLayout="column" fxLayoutAlign="start center">
+            <mat-card-title translate>User</mat-card-title>
+            <mat-card-subtitle>subtitle</mat-card-subtitle>
+            <div fxFlex></div>
+            <div fxLayout="row" fxLayoutAlign="center center">
+                <button mat-raised-button routerLink="/home" routerLinkActive="active" color="primary">
+                    <span translate>Prev</span>
+                </button>
+                <div class="spacer"></div>
+                <button mat-raised-button routerLink="/about" routerLinkActive="active" color="primary">
+                    <span translate>Next</span>
+                </button>
+            </div>
         </mat-card-content>
     </mat-card>
-
 </div>

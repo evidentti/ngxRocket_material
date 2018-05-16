@@ -31,12 +31,12 @@ export class AboutComponent implements OnInit, OnDestroy, AfterContentInit, Afte
 
   ngOnInit() {
     log.debug('init');
-    this.isLoading = true;
-    const username = 'user';
-    const password = 'password';
-    this.saunatakkiService.getUsers({ key: 'avain3', username: username, password: password })
-      .pipe(finalize(() => { this.isLoading = false; }))
-      .subscribe((result: string) => { this.result = result; });
+    // this.isLoading = true;
+    // const username = 'user';
+    // const password = 'password';
+    // this.saunatakkiService.getUsers({ key: 'avain3', username: username, password: password })
+    //   .pipe(finalize(() => { this.isLoading = false; }))
+    //   .subscribe((result: string) => { this.result = result; });
   }
 
   ngAfterContentInit() {

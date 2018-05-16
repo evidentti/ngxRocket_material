@@ -1,9 +1,24 @@
 <div class="container" fxFill>
     <mat-card fxFill>
         <mat-card-content fxFill fxLayout="column" fxLayoutAlign="start center">
-            <mat-card-title translate>User</mat-card-title>
-            <mat-card-subtitle>subtitle</mat-card-subtitle>
-            <div fxFlex></div>
+            <mat-card-title translate>Asiakastiedot</mat-card-title>
+            <div class="spacer"></div>
+            <mat-card-subtitle>Integer urna elit, tempus non dictum id, viverra in mi. Integer id libero rutrum, tempor quam condimentum, commodo dui. Etiam.</mat-card-subtitle>
+            <div class="spacer-2"></div>
+            <form fxFlex fxLayout="column" fxLayoutAlign="start center">
+                <mat-form-field>
+                    <mat-label>Nimi</mat-label>
+                    <input matInput type="text" [value]="user.name" required>
+                </mat-form-field>
+                <mat-form-field>
+                  <mat-label>email</mat-label>
+                  <input matInput placeholder="Enter your email" [value]="user.email" required>
+              </mat-form-field>
+                <mat-form-field>
+                  <mat-label>puhelin</mat-label>
+                  <input matInput type="tel" [value]="user.phone" required>
+              </mat-form-field>
+            </form>
             <div fxLayout="row" fxLayoutAlign="center center">
                 <button mat-raised-button routerLink="/home" routerLinkActive="active" color="primary">
                     <span translate>Prev</span>

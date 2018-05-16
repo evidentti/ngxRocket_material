@@ -22,16 +22,16 @@ export class UserComponent implements OnInit, OnDestroy, AfterContentInit, After
     log.debug('init');
     this.isLoading = true;
     this.userService
-    .setUser({name: 'nimi', email: 'email', phone: '123456789', loggedIn: true})
-    .pipe(
-      finalize(() => {
-        this.isLoading = false;
-      })
-    )
-    .subscribe((user: UserContext) => {
-      this.user = user;
-      log.debug('user =', this.user);
-    });
+      .setUser({ name: 'nimi', email: 'email', phone: '123456789', loggedIn: true })
+      .pipe(
+        finalize(() => {
+          this.isLoading = false;
+        })
+      )
+      .subscribe((user: UserContext) => {
+        this.user = user;
+        log.debug('user =', this.user);
+      });
   }
 
   ngAfterContentInit() {
@@ -56,5 +56,13 @@ export class UserComponent implements OnInit, OnDestroy, AfterContentInit, After
 
   ngOnDestroy() {
     log.debug('destroy');
+  }
+
+  getErrorMessage() {
+    return this.email.hasError('required')
+      ? 'You must enter a value'
+      : this.email.hasError('email')
+        ? 'Not a valid email'
+        : '';
   }
 }

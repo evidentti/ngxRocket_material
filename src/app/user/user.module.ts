@@ -10,6 +10,8 @@ import { UserComponent } from './user.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 
+import { UserService } from './user.service';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -20,8 +22,8 @@ import { MatInputModule } from '@angular/material/input';
     MatButtonModule,
     MatInputModule
   ],
-  declarations: [
-    UserComponent
-  ]
+  declarations: [UserComponent],
+  providers: [UserService]
 })
-export class UserModule { }
+
+export class UserModule {}

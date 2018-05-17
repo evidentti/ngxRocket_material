@@ -8,16 +8,16 @@
             <form fxFlex fxLayout="column" fxLayoutAlign="start center">
                 <mat-form-field>
                     <mat-label>Nimi</mat-label>
-                    <input matInput type="text" [value]="user.name" required>
+                    <input matInput type="text" [value]="user.name" required />
                 </mat-form-field>
                 <mat-form-field>
-                  <mat-label>email</mat-label>
-                  <input matInput placeholder="Enter your email" [value]="user.email" required>
-              </mat-form-field>
+                    <mat-label>email</mat-label>
+                    <input matInput placeholder="Enter your email" [value]="user.email" required />
+                </mat-form-field>
                 <mat-form-field>
-                  <mat-label>puhelin</mat-label>
-                  <input matInput type="tel" [value]="user.phone" required>
-              </mat-form-field>
+                    <mat-label>puhelin</mat-label>
+                    <input matInput type="tel" [value]="user.phone" required />
+                </mat-form-field>
             </form>
             <div fxLayout="row" fxLayoutAlign="center center">
                 <button mat-raised-button routerLink="/home" routerLinkActive="active" color="primary">

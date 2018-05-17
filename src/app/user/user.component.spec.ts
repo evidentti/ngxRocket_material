@@ -1,7 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from '@app/material.module';
 
 import { UserComponent } from './user.component';
+import { UserService } from './user.service';
 
 describe('UserComponent', () => {
   let component: UserComponent;
@@ -9,12 +11,10 @@ describe('UserComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [
-        MaterialModule
-      ],
-      declarations: [ UserComponent ]
-    })
-    .compileComponents();
+      imports: [BrowserAnimationsModule, MaterialModule],
+      declarations: [UserComponent],
+      providers: [UserService]
+    }).compileComponents();
   }));
 
   beforeEach(() => {

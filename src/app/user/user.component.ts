@@ -17,7 +17,7 @@ export class UserComponent implements OnInit, OnDestroy, AfterContentInit, After
 
   name = new FormControl(this.user.name, [Validators.required]);
   email = new FormControl(this.user.email, [Validators.required, Validators.email]);
-  phone = new FormControl(this.user.phone, [Validators.required]);
+  phone = new FormControl(this.user.phone, [Validators.required, Validators.minLength(10)]);
 
   constructor(private userService: UserService) {
     log.debug('constructor');
@@ -74,26 +74,34 @@ export class UserComponent implements OnInit, OnDestroy, AfterContentInit, After
     this.phone.markAsTouched();
   }
 
-  getErrorMessage(type: string) {
-    log.debug('getErrorMessage', type);
+  getNameError() {
+    log.debug('getNameError');
     let message = '';
-    if (type === 'name') {
-      if (this.name.hasError('required')) {
-        message = 'Nimi puuttuu';
-      }
-    } else if (type === 'email') {
-      if (this.email.hasError('required')) {
-        message = 'Sähköposti puuttuu';
-      } else if (this.email.hasError('email')) {
-        message = 'Sähköposti on virheellinen';
-      }
-    } else if (type === 'phone') {
-      log.debug(this.phone.hasError('required'), this.phone.hasError('phone'));
-      if (this.phone.hasError('required')) {
-        message = 'Numero puuttuu';
-      }
+    if (this.name.hasError('required')) {
+      message = 'Nimi puuttuu';
     }
+    return message;
+  }
 
+  getEmailError() {
+    log.debug('getEmailError');
+    let message = '';
+    if (this.email.hasError('required')) {
+      message = 'Sähköposti puuttuu';
+    } else if (this.email.hasError('email')) {
+      message = 'Sähköposti on virheellinen';
+    }
+    return message;
+  }
+
+  getPhoneError() {
+    log.debug('getPhoneError');
+    let message = '';
+    if (this.phone.hasError('required')) {
+      message = 'Numero puuttuu';
+    } else if (this.phone.hasError('minlength')) {
+      message = 'Numero on liian lyhyt';
+    }
     return message;
   }
 }

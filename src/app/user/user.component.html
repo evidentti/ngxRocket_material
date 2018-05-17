@@ -9,21 +9,22 @@
                 <mat-form-field>
                     <mat-label>Nimi</mat-label>
                     <input matInput [formControl]="name" required />
-                    <mat-error *ngIf="name.invalid">{{getErrorMessage('name')}}</mat-error>
+                    <mat-error *ngIf="name.invalid">{{getNameError()}}</mat-error>
                 </mat-form-field>
                 <div class="spacer"></div>
                 <mat-form-field>
                     <mat-label>Sähköposti</mat-label>
                     <input matInput placeholder="Syötä sähköpostiosoite" [formControl]="email" required />
-                    <mat-error *ngIf="email.invalid">{{getErrorMessage('email')}}</mat-error>
+                    <mat-error *ngIf="email.invalid">{{getEmailError()}}</mat-error>
                 </mat-form-field>
                 <div class="spacer"></div>
                 <mat-form-field>
                     <mat-label>matkapuhelin</mat-label>
                     <input matInput placeholder="Syötä matkapuhelinnumero" [formControl]="phone" required />
-                    <mat-error *ngIf="phone.invalid">{{getErrorMessage('phone')}}</mat-error>
+                    <mat-error *ngIf="phone.invalid">{{getPhoneError()}}</mat-error>
                 </mat-form-field>
             </form>
+            <div class="spacer-2"></div>
             <div fxLayout="row" fxLayoutAlign="center center">
                 <button mat-raised-button routerLink="/home" routerLinkActive="active" color="primary">
                     <span translate>Prev</span>

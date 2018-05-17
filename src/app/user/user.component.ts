@@ -75,33 +75,29 @@ export class UserComponent implements OnInit, OnDestroy, AfterContentInit, After
   }
 
   getNameError() {
-    log.debug('getNameError');
-    let message = '';
     if (this.name.hasError('required')) {
-      message = 'Nimi puuttuu';
+      return 'Nimi puuttuu';
     }
-    return message;
+    return '';
   }
 
   getEmailError() {
-    log.debug('getEmailError');
-    let message = '';
     if (this.email.hasError('required')) {
-      message = 'Sähköposti puuttuu';
-    } else if (this.email.hasError('email')) {
-      message = 'Sähköposti on virheellinen';
+      return 'Sähköposti puuttuu';
     }
-    return message;
+    if (this.email.hasError('email')) {
+      return 'Sähköposti on virheellinen';
+    }
+    return '';
   }
 
   getPhoneError() {
-    log.debug('getPhoneError');
-    let message = '';
     if (this.phone.hasError('required')) {
-      message = 'Numero puuttuu';
-    } else if (this.phone.hasError('minlength')) {
-      message = 'Numero on liian lyhyt';
+      return 'Numero puuttuu';
     }
-    return message;
+    if (this.phone.hasError('minlength')) {
+      return 'Vähintään 10 merkkiä';
+    }
+    return '';
   }
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy, AfterContentInit, AfterViewInit } from '@angular/core';
 import { UserService, UserContext } from './user.service';
+import { FormControl, Validators } from '@angular/forms';
 import { finalize } from 'rxjs/operators';
 import { Logger } from '@app/core';
 
@@ -12,7 +13,11 @@ const log = new Logger('UserComponent');
 })
 export class UserComponent implements OnInit, OnDestroy, AfterContentInit, AfterViewInit {
   isLoading: boolean;
-  user: UserContext;
+  user: UserContext = { name: '', phone: '', email: '', loggedIn: false };
+
+  name = new FormControl(this.user.name, [Validators.required]);
+  email = new FormControl(this.user.email, [Validators.required, Validators.email]);
+  phone = new FormControl(this.user.phone, [Validators.required]);
 
   constructor(private userService: UserService) {
     log.debug('constructor');
@@ -22,15 +27,15 @@ export class UserComponent implements OnInit, OnDestroy, AfterContentInit, After
     log.debug('init');
     this.isLoading = true;
     this.userService
-      .setUser({ name: 'nimi', email: 'email', phone: '123456789', loggedIn: true })
+      .setUser({ name: 'nimi', email: 'testi@email.com', phone: '123456789', loggedIn: true })
       .pipe(
         finalize(() => {
           this.isLoading = false;
         })
       )
       .subscribe((user: UserContext) => {
-        this.user = user;
         log.debug('user =', this.user);
+        this.updateUserData(user);
       });
   }
 
@@ -45,8 +50,8 @@ export class UserComponent implements OnInit, OnDestroy, AfterContentInit, After
         })
       )
       .subscribe((user: UserContext) => {
-        this.user = user;
         log.debug('user =', this.user);
+        this.updateUserData(user);
       });
   }
 
@@ -58,11 +63,37 @@ export class UserComponent implements OnInit, OnDestroy, AfterContentInit, After
     log.debug('destroy');
   }
 
-  getErrorMessage() {
-    // return this.email.hasError('required')
-    //   ? 'You must enter a value'
-    //   : this.email.hasError('email')
-    //     ? 'Not a valid email'
-    //     : '';
+  updateUserData(user: UserContext) {
+    log.debug('updateUserData');
+    this.user = user;
+    this.name.setValue(user.name);
+    this.email.setValue(user.email);
+    this.phone.setValue(user.phone);
+    this.name.markAsTouched();
+    this.email.markAsTouched();
+    this.phone.markAsTouched();
+  }
+
+  getErrorMessage(type: string) {
+    log.debug('getErrorMessage', type);
+    let message = '';
+    if (type === 'name') {
+      if (this.name.hasError('required')) {
+        message = 'Nimi puuttuu';
+      }
+    } else if (type === 'email') {
+      if (this.email.hasError('required')) {
+        message = 'Sähköposti puuttuu';
+      } else if (this.email.hasError('email')) {
+        message = 'Sähköposti on virheellinen';
+      }
+    } else if (type === 'phone') {
+      log.debug(this.phone.hasError('required'), this.phone.hasError('phone'));
+      if (this.phone.hasError('required')) {
+        message = 'Numero puuttuu';
+      }
+    }
+
+    return message;
   }
 }

@@ -9,6 +9,7 @@ import { UserComponent } from './user.component';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { UserService } from './user.service';
 
@@ -20,10 +21,11 @@ import { UserService } from './user.service';
     MaterialModule,
     UserRoutingModule,
     MatButtonModule,
-    MatInputModule
+    MatInputModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   declarations: [UserComponent],
   providers: [UserService]
 })
-
 export class UserModule {}

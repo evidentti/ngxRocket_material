@@ -8,15 +8,20 @@
             <form fxFlex fxLayout="column" fxLayoutAlign="start center">
                 <mat-form-field>
                     <mat-label>Nimi</mat-label>
-                    <input matInput type="text" [value]="user.name" required />
+                    <input matInput [formControl]="name" required />
+                    <mat-error *ngIf="name.invalid">{{getErrorMessage('name')}}</mat-error>
                 </mat-form-field>
+                <div class="spacer"></div>
                 <mat-form-field>
-                    <mat-label>email</mat-label>
-                    <input matInput placeholder="Enter your email" [value]="user.email" required />
+                    <mat-label>Sähköposti</mat-label>
+                    <input matInput placeholder="Syötä sähköpostiosoite" [formControl]="email" required />
+                    <mat-error *ngIf="email.invalid">{{getErrorMessage('email')}}</mat-error>
                 </mat-form-field>
+                <div class="spacer"></div>
                 <mat-form-field>
-                    <mat-label>puhelin</mat-label>
-                    <input matInput type="tel" [value]="user.phone" required />
+                    <mat-label>matkapuhelin</mat-label>
+                    <input matInput placeholder="Syötä matkapuhelinnumero" [formControl]="phone" required />
+                    <mat-error *ngIf="phone.invalid">{{getErrorMessage('phone')}}</mat-error>
                 </mat-form-field>
             </form>
             <div fxLayout="row" fxLayoutAlign="center center">

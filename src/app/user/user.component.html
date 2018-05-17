@@ -20,7 +20,7 @@
                 <div class="spacer"></div>
                 <mat-form-field>
                     <mat-label>matkapuhelin</mat-label>
-                    <input matInput placeholder="Syötä matkapuhelinnumero" [formControl]="phone" required />
+                    <input matInput placeholder="Syötä matkapuhelinnumero" [formControl]="phone" required (keypress)="keyPress($event, phone)" />
                     <mat-error *ngIf="phone.invalid">{{getPhoneError()}}</mat-error>
                 </mat-form-field>
             </form>

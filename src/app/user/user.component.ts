@@ -27,7 +27,7 @@ export class UserComponent implements OnInit, OnDestroy, AfterContentInit, After
     log.debug('init');
     this.isLoading = true;
     this.userService
-      .setUser({ name: 'nimi', email: 'testi@email.com', phone: '123456789', loggedIn: true })
+      .setUser({ name: 'Anssi Asiakas', email: 'testi@email.com', phone: '1234567890', loggedIn: true })
       .pipe(
         finalize(() => {
           this.isLoading = false;
@@ -99,5 +99,16 @@ export class UserComponent implements OnInit, OnDestroy, AfterContentInit, After
       return 'Vähintään 10 merkkiä';
     }
     return '';
+  }
+
+  keyPress(event: any, owner: FormControl) {
+    log.debug('keyPress', event, owner.value);
+    const pattern = /[0-9\+\-\ ]/;
+    const inputChar = String.fromCharCode(event.charCode);
+    if (event.keyCode !== 8 && !pattern.test(inputChar)) {
+      event.preventDefault();
+    } else if (event.keyCode === 32 && owner.value.split(' ', 3).length > 2) {
+      event.preventDefault();
+    }
   }
 }

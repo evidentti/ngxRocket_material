@@ -1,4 +1,4 @@
-<div class="container" fxFill>
+<div class="container">
     <mat-card fxFill>
         <mat-card-content fxFill fxLayout="column" fxLayoutAlign="start center">
             <mat-card-title translate>Asiakastiedot</mat-card-title>
@@ -6,22 +6,25 @@
             <mat-card-subtitle>Integer urna elit, tempus non dictum id, viverra in mi. Integer id libero rutrum, tempor quam condimentum, commodo dui. Etiam.</mat-card-subtitle>
             <div class="spacer-2"></div>
             <form fxFlex fxLayout="column" fxLayoutAlign="start center">
-                <mat-form-field>
+                <mat-form-field class="margin-1">
                     <mat-label>Nimi</mat-label>
                     <input matInput [formControl]="name" required />
-                    <mat-error *ngIf="name.invalid">{{getNameError()}}</mat-error>
+                    <mat-error *ngIf="name.invalid">{{getErrorMessage(name)}}</mat-error>
                 </mat-form-field>
-                <div class="spacer"></div>
-                <mat-form-field>
+                <mat-form-field class="margin-1" *ngIf="user.role">
                     <mat-label>Sähköposti</mat-label>
                     <input matInput placeholder="Syötä sähköpostiosoite" [formControl]="email" required />
-                    <mat-error *ngIf="email.invalid">{{getEmailError()}}</mat-error>
+                    <mat-error *ngIf="email.invalid">{{getErrorMessage(email)}}</mat-error>
                 </mat-form-field>
-                <div class="spacer"></div>
-                <mat-form-field>
+                <mat-form-field class="margin-1" *ngIf="user.isLoggedIn == true || !user.role">
                     <mat-label>matkapuhelin</mat-label>
                     <input matInput placeholder="Syötä matkapuhelinnumero" [formControl]="phone" required (keypress)="keyPress($event, phone)" />
-                    <mat-error *ngIf="phone.invalid">{{getPhoneError()}}</mat-error>
+                    <mat-error *ngIf="phone.invalid">{{getErrorMessage(phone)}}</mat-error>
+                </mat-form-field>
+                <mat-form-field class="margin-1" *ngIf="user.isLoggedIn !== true && user.role && user.role.typeId === 1000">
+                    <mat-label>salasana</mat-label>
+                    <input matInput placeholder="Syötä salasana" [formControl]="password" required />
+                    <mat-error *ngIf="password.invalid">{{getErrorMessage(password)}}</mat-error>
                 </mat-form-field>
             </form>
             <div class="spacer-2"></div>

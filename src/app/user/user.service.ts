@@ -6,11 +6,18 @@ import { Logger } from '@app/core';
 
 const log = new Logger('UserService');
 
+export interface RoleContext {
+  id: number;
+  type: string;
+  typeId: number;
+}
+
 export interface UserContext {
   name: string;
   email: string;
   phone: string;
-  loggedIn: boolean;
+  isLoggedIn: boolean;
+  role: RoleContext;
 }
 
 @Injectable()
@@ -27,7 +34,7 @@ export class UserService {
   }
 
   setUser(user: UserContext): Observable<UserContext> {
-    log.debug('setUser');
+    log.debug('setUser', user);
     this.user = user;
     return Observable.of(this.user);
   }
